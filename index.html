@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Acceso - Soporte Digital VIP</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #0b1120; color: #94a3b8; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        .glass-header { background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .tutorial-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 1rem; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .tutorial-card:hover { transform: translateY(-3px); border-color: #3b82f6; }
+        .step-number { background: linear-gradient(135s, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .browser-screenshot { border: 4px solid #1f2937; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .nav-link { padding-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; color: #64748b; border-bottom: 2px solid transparent; transition: all 0.2s; cursor: pointer; }
+        .nav-link:hover { color: #94a3b8; }
+        .nav-link.active { color: #3b82f6; border-bottom: 2px solid #3b82f6; font-weight: 600; }
+        .alert-box { background: linear-gradient(to right, rgba(234, 179, 8, 0.1), transparent); border-left: 4px solid #eab308; }
+        .success-box { background: linear-gradient(to right, rgba(16, 185, 129, 0.1), transparent); border-left: 4px solid #10b981; }
+        
+        /* Ocultar sección inactiva */
+        .hidden-section { display: none; }
+
+        /* Evita que los enlaces largos rompan la pantalla en celulares */
+        a[href^="http"] { word-break: break-all; white-space: normal; }
+        
+        /* Asegura que las imágenes tengan un margen y no toquen los bordes */
+        .browser-screenshot { max-width: 92% !important; margin-left: auto !important; margin-right: auto !important; display: block; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <header class="glass-header sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-user-shield text-3xl text-blue-500"></i>
+                <h1 class="text-2xl font-bold text-white tracking-tight">Centro de Soporte <span class="text-blue-500">VIP</span></h1>
+            </div>
+            <div class="flex items-center gap-2 text-sm bg-blue-900/30 text-blue-300 px-4 py-1.5 rounded-full font-medium">
+                <i class="fas fa-lock"></i> Guía Confidencial
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 md:p-10">
+
+        <section class="mb-12 text-center md:text-left p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-black border border-slate-800 shadow-xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-extrabold text-white tracking-tighter mb-4">Bienvenido a su Guía de Acceso</h2>
+                <p class="text-lg text-slate-300 max-w-3xl mb-6">Esta guía detallada le indicará, paso a paso, cómo ingresar y gestionar su nueva cuenta de correo electrónico puente. Este correo es necesario para la administración de seguridad de su cuenta VIP.</p>
+                
+                <div class="alert-box p-5 rounded-r-xl border border-slate-700/50 mb-2">
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-exclamation-triangle text-3xl text-yellow-500 mt-1"></i>
+                        <div>
+                            <span class="font-bold text-white text-lg block mb-1">AVISO IMPORTANTE SOBRE LAS CAPTURAS:</span>
+                            <span class="text-sm text-slate-300">El proveedor de este correo es internacional y su idioma original no es el español. <strong>Todas las capturas y pasos de este tutorial se realizaron utilizando el traductor nativo del navegador activado en todo momento.</strong> Si usted ve su pantalla ligeramente diferente o en otro idioma, es porque no ha activado la traducción. Le mostraremos cómo hacerlo en el Paso 2.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <i class="fas fa-globe text-[200px] text-slate-800/30 absolute -bottom-10 -right-10 z-0"></i>
+        </section>
+
+        <section class="mb-10 border-b border-slate-800 flex items-center gap-6">
+            <button id="btn-desktop" onclick="switchTab('desktop')" class="nav-link active">
+                <i class="fas fa-desktop"></i> Guía para Computadora
+            </button>
+            <button id="btn-mobile" onclick="switchTab('mobile')" class="nav-link">
+                <i class="fas fa-mobile-alt"></i> Guía para Teléfono
+            </button>
+        </section>
+
+        <section id="desktop-tutorial" class="space-y-10">
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6"><span class="step-number text-5xl font-black">01</span><div><h4 class="text-2xl font-bold text-white">Acceso al Portal Oficial</h4><p class="text-slate-400 mt-1">Abra su navegador web de preferencia en su computadora de escritorio.</p></div></div>
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700 mb-8"><p class="text-white">Haga clic en el siguiente enlace oficial para abrir el portal de acceso al correo:</p><a href="https://mail.rambler.ru/" target="_blank" class="inline-block mt-3 text-lg font-mono font-bold text-blue-400 hover:text-blue-300 transition-colors bg-blue-950 px-4 py-2 rounded"><i class="fas fa-link mr-1"></i> https://mail.rambler.ru/</a></div>
+                    <p class="mb-6">Al cargar la página, visualizará la pantalla de inicio de sesión en idioma ruso. Señalamos con recuadros rojos dónde se ingresarán sus credenciales más adelante.</p>
+                    <img src="imagenes/image_b8ccc3.png" alt="Pantalla de inicio de sesión de Rambler en Ruso" class="browser-screenshot w-full">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6"><span class="step-number text-5xl font-black">02</span><div><h4 class="text-2xl font-bold text-white">Traducción de la Página al Español</h4><p class="text-slate-400 mt-1">Paso fundamental para que su pantalla coincida con el resto de este tutorial.</p></div></div>
+                    <p class="mb-6">Casi todos los navegadores modernos (Chrome, Edge) ofrecen esta función. Siga estos pasos sobre la página de inicio:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1"><li class="flex items-start gap-3"><i class="fas fa-mouse-pointer text-blue-500 mt-1"></i> <div><strong class="text-white">Clic Derecho:</strong> Haga clic con el botón derecho del ratón en cualquier espacio en blanco de la página.</div></li><li class="flex items-start gap-3"><i class="fas fa-language text-blue-500 mt-1"></i> <div><strong class="text-white">Seleccionar Traducir:</strong> En el menú que aparece, busque y seleccione la opción <span class="font-medium text-blue-300">"Traducir al español"</span>.</div></li></ul>
+                    <img src="imagenes/image_b8cd23.png" alt="Demostración de menú contextual para traducir página en el navegador" class="browser-screenshot max-w-md mx-auto">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6"><span class="step-number text-5xl font-black">03</span><div><h4 class="text-2xl font-bold text-white">Ingreso de Credenciales y Verificación</h4><p class="text-slate-400 mt-1">Coloque los datos proporcionados para acceder a su bandeja.</p></div></div>
+                    <p class="mb-6">Con la página ya traducida al español, siga estos 3 pasos en el formulario central:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1"><li class="flex items-start gap-3"><i class="fas fa-keyboard text-blue-500 mt-1"></i> <div><strong class="text-white">Correo y Contraseña:</strong> Ingrese el correo electrónico y la contraseña exacta que le hemos proporcionado en su compra.</div></li><li class="flex items-start gap-3"><i class="fas fa-robot text-blue-500 mt-1"></i> <div><strong class="text-white">Verificación de Seguridad:</strong> Marque la casilla que dice <span class="font-medium text-blue-300">"Soy humano"</span> y resuelva el pequeño rompecabezas visual si el sistema se lo solicita.</div></li><li class="flex items-start gap-3"><i class="fas fa-sign-in-alt text-blue-500 mt-1"></i> <div><strong class="text-white">Botón de Acceso:</strong> Haga clic en el botón azul de <span class="font-medium text-blue-300">"Acceso"</span>.</div></li></ul>
+                    <img src="imagenes/image_b95122.png" alt="Formulario de ingreso de credenciales y captcha" class="browser-screenshot w-full">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg border border-blue-500/30">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6"><span class="step-number text-5xl font-black">04</span><div><h4 class="text-2xl font-bold text-white">Omitir Verificación de Teléfono <span class="text-red-400 text-xs md:text-sm ml-2 bg-red-900/30 px-2 py-1 rounded tracking-widest uppercase">¡Muy Importante!</span></h4><p class="text-slate-400 mt-1">No es obligatorio ingresar datos personales en este paso.</p></div></div>
+                    <div class="bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6 text-slate-300"><p><i class="fas fa-info-circle text-blue-500 mr-2"></i> <strong>Nota:</strong> Gracias a que mantenemos el traductor activo, los botones de la siguiente pantalla de seguridad aparecerán en español, tal como se muestra en la imagen.</p></div>
+                    <p class="mb-6">Tras presionar "Acceso", el sistema lo llevará a una pantalla de verificación de seguridad que solicita un número de teléfono. <strong>Este paso NO es obligatorio.</strong> Siga esta instrucción vital:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1"><li class="flex items-start gap-3"><i class="fas fa-hand-pointer text-blue-500 mt-1"></i> <div><strong class="text-white">Seleccione "Confirmar más tarde":</strong> Ignore la casilla de teléfono y busque en la parte inferior de la pantalla el texto traducido que dice <span class="font-bold text-blue-400 tracking-wide">"Confirmar más tarde"</span>. Haga clic sobre él.</div></li></ul>
+                    <img src="imagenes/image_b9b27c.png" alt="Botón para omitir el número de teléfono" class="browser-screenshot w-full">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg border border-emerald-500/30">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6"><span class="step-number text-5xl font-black">05</span><div><h4 class="text-2xl font-bold text-white">Administración Completa de la Bandeja de Entrada</h4><p class="text-slate-400 mt-1">Acceso final a su panel de gestión de correos electrónicos.</p></div></div>
+                    <p class="mb-6">¡Felicidades! Al completar los pasos anteriores, usted ha saltado los controles de seguridad y se encuentra oficialmente dentro de su bandeja de entrada de correo puente.</p>
+                    <div class="success-box p-5 rounded-r-xl border border-emerald-800/50 mb-8"><div class="flex items-start gap-4"><i class="fas fa-envelope-open-text text-3xl text-emerald-500 mt-1"></i><div><span class="font-bold text-white text-lg block mb-1">Funcionalidad de la Bandeja:</span><span class="text-sm text-slate-300">En esta pantalla principal, usted podrá visualizar todos los correos electrónicos recibidos. Esta cuenta está lista para recibir los enlaces de restablecimiento de contraseña de las cuentas VIP que usted ha adquirido.</span></div></div></div>
+                    <p class="mb-6">Como se muestra en la captura de pantalla a continuación, mantenemos el traductor nativo del navegador activado para facilitar la lectura. <strong class="text-yellow-400 font-medium">Nota:</strong> Si al llegar a esta página nota que el traductor se desactiva automáticamente, simplemente repita el **Paso 02** para recuperar la interfaz en su idioma.</p>
+                    <img src="imagenes/image_b9bd24.png" alt="Bandeja de entrada del correo Rambler traducida al español" class="browser-screenshot w-full">
+                </div>
+            </div>
+        </section>
+
+        <section id="mobile-tutorial" class="space-y-10 hidden-section">
+            
+            <div class="flex flex-col md:flex-row items-center gap-6 bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <i class="fas fa-mobile-alt text-5xl text-blue-400"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Acceso optimizado para dispositivos móviles</h3>
+                    <p class="text-slate-400">Las pantallas de los celulares son más pequeñas y los menús cambian ligeramente. Siga estas instrucciones detalladas paso a paso desde la comodidad de su teléfono.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="step-number text-5xl font-black">01</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Acceso al Portal desde su Teléfono</h4>
+                            <p class="text-slate-400 mt-1">Abra la aplicación de su navegador en su dispositivo móvil.</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700 mb-8">
+                        <p class="text-white">Toque el siguiente enlace oficial para abrir el portal de acceso al correo:</p>
+                        <a href="https://mail.rambler.ru/" target="_blank" class="inline-block mt-3 text-lg font-mono font-bold text-blue-400 hover:text-blue-300 transition-colors bg-blue-950 px-4 py-2 rounded">
+                            <i class="fas fa-link mr-1"></i> https://mail.rambler.ru/
+                        </a>
+                    </div>
+                    <p class="mb-6">Al cargar la página, visualizará la pantalla de inicio de sesión. Como el sitio es internacional, la pantalla estará en ruso. En la siguiente imagen le señalamos en rojo los campos donde colocará su información en pasos posteriores.</p>
+                    <img src="imagenes/movil_paso1.png" alt="Pantalla de inicio de sesión móvil en ruso" class="browser-screenshot w-full max-w-sm mx-auto block">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="step-number text-5xl font-black">02</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Traducción de la Página en su Teléfono</h4>
+                            <p class="text-slate-400 mt-1">Paso vital para poder leer las opciones y menús de acceso.</p>
+                        </div>
+                    </div>
+                    <p class="mb-6">Para traducir la interfaz al español en un dispositivo móvil, utilizaremos las herramientas integradas de su navegador:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1">
+                        <li class="flex items-start gap-3"><i class="fas fa-ellipsis-v text-blue-500 mt-1 mx-1"></i> <div><strong class="text-white">Menú del Navegador:</strong> Toque el ícono de opciones de su navegador (suele estar representado por tres puntos en la esquina superior o inferior de su pantalla).</div></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-language text-blue-500 mt-1"></i> <div><strong class="text-white">Opción Traducir:</strong> En el menú desplegable, busque y presione la opción que dice <span class="font-medium text-blue-300">"Traducir"</span> o "Traducir página".</div></li>
+                    </ul>
+                    <img src="imagenes/movil_paso2.png" alt="Menú de navegador móvil mostrando la opción de traducir" class="browser-screenshot w-full max-w-sm mx-auto block">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="step-number text-5xl font-black">03</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Ingreso de Datos en el Celular</h4>
+                            <p class="text-slate-400 mt-1">Coloque sus credenciales y pase el control de seguridad.</p>
+                        </div>
+                    </div>
+                    <p class="mb-6">Con la pantalla traducida, el proceso es muy claro. Siga estos pasos tocando la pantalla:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1">
+                        <li class="flex items-start gap-3"><i class="fas fa-keyboard text-blue-500 mt-1"></i> <div><strong class="text-white">Correo y Contraseña:</strong> Toque las casillas correspondientes y escriba el correo y la contraseña que le proporcionamos.</div></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-robot text-blue-500 mt-1"></i> <div><strong class="text-white">Verificación (Captcha):</strong> Toque el cuadro blanco junto a <span class="font-medium text-blue-300">"Soy humano"</span>. Si le aparece un mini-juego de seleccionar imágenes, resuélvalo.</div></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-hand-pointer text-blue-500 mt-1"></i> <div><strong class="text-white">Botón de Acceso:</strong> Finalmente, presione el botón azul de <span class="font-medium text-blue-300">"Acceso"</span> que le señalamos en la imagen.</div></li>
+                    </ul>
+                    <img src="imagenes/movil_paso3.png" alt="Formulario de ingreso y captcha en celular" class="browser-screenshot w-full max-w-sm mx-auto block">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg border border-blue-500/30">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="step-number text-5xl font-black">04</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Omitir Verificación de Teléfono <span class="text-red-400 text-xs md:text-sm ml-2 bg-red-900/30 px-2 py-1 rounded tracking-widest uppercase">¡Muy Importante!</span></h4>
+                            <p class="text-slate-400 mt-1">No ingrese su número de teléfono en este paso.</p>
+                        </div>
+                    </div>
+                    <p class="mb-6">Después de presionar "Acceso", aparecerá una pantalla de seguridad pidiendo un número telefónico. En celulares, a veces la opción para saltar este paso queda escondida más abajo. Siga esta instrucción:</p>
+                    <ul class="list-none space-y-4 text-slate-300 mb-8 pl-1">
+                        <li class="flex items-start gap-3"><i class="fas fa-arrows-alt-v text-blue-500 mt-1"></i> <div><strong class="text-white">Deslice hacia abajo:</strong> Si es necesario, deslice su dedo por la pantalla hacia abajo hasta llegar al final.</div></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-hand-pointer text-blue-500 mt-1"></i> <div><strong class="text-white">Seleccione "Confirmar más tarde":</strong> Ignore completamente el campo del teléfono y toque el texto azul que dice <span class="font-bold text-blue-400 tracking-wide">"Confirmar más tarde"</span>, justo como señalamos en la imagen.</div></li>
+                    </ul>
+                    <img src="imagenes/movil_paso4.png" alt="Botón para omitir el número de teléfono en celular" class="browser-screenshot w-full max-w-sm mx-auto block">
+                </div>
+            </div>
+
+            <div class="tutorial-card shadow-lg border border-emerald-500/30">
+                <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="step-number text-5xl font-black">05</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">Administración de su Bandeja desde el Celular</h4>
+                            <p class="text-slate-400 mt-1">Acceso final a su panel de gestión de correos electrónicos.</p>
+                        </div>
+                    </div>
+                    <p class="mb-6">¡Felicidades! Ha saltado los controles de seguridad y se encuentra oficialmente dentro de su bandeja de entrada desde su dispositivo móvil.</p>
+                    
+                    <div class="success-box p-5 rounded-r-xl border border-emerald-800/50 mb-8">
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-envelope-open-text text-3xl text-emerald-500 mt-1"></i>
+                            <div>
+                                <span class="font-bold text-white text-lg block mb-1">Bandeja Lista:</span>
+                                <span class="text-sm text-slate-300">Aquí podrá ver todos los correos recibidos. Esta cuenta está lista para recibir los enlaces de restablecimiento de contraseña de sus cuentas VIP.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mb-6">Como se ve en la captura, gracias al traductor activado, podrá leer toda la interfaz en su idioma. <strong class="text-yellow-400 font-medium">Nota:</strong> Si en algún momento la página vuelve a cambiar a otro idioma mientras navega, simplemente repita el <strong>Paso 02</strong> (toque el menú de los 3 puntitos y seleccione Traducir) para recuperar el español.</p>
+                    
+                    <img src="imagenes/movil_paso5.png" alt="Bandeja de entrada del correo Rambler en celular traducida al español" class="browser-screenshot w-full max-w-sm mx-auto block">
+                    
+                    <div class="mt-8 bg-emerald-950/50 p-6 rounded-xl border-2 border-dashed border-emerald-800 text-center text-emerald-200">
+                        <i class="fas fa-star text-4xl mb-3"></i>
+                        <h5 class="text-lg font-bold text-white">Tutorial para Teléfono Concluido</h5>
+                        <p class="text-sm">Usted ha configurado y accedido con éxito desde su móvil. Ya tiene el control total para administrar los correos y realizar el cambio de credenciales de sus nuevas cuentas VIP.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="mt-20 py-8 border-t border-slate-800 text-center text-sm text-slate-600">
+            <p>&copy; 2026 Servicio de Soporte VIP - Documentación Confidencial para Clientes.</p>
+            <p class="mt-1">El uso no autorizado de esta guía está prohibido.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        function switchTab(tabName) {
+            const btnDesktop = document.getElementById('btn-desktop');
+            const btnMobile = document.getElementById('btn-mobile');
+            const sectionDesktop = document.getElementById('desktop-tutorial');
+            const sectionMobile = document.getElementById('mobile-tutorial');
+
+            if (tabName === 'desktop') {
+                btnDesktop.classList.add('active');
+                btnMobile.classList.remove('active');
+                sectionDesktop.classList.remove('hidden-section');
+                sectionMobile.classList.add('hidden-section');
+            } else if (tabName === 'mobile') {
+                btnMobile.classList.add('active');
+                btnDesktop.classList.remove('active');
+                sectionMobile.classList.remove('hidden-section');
+                sectionDesktop.classList.add('hidden-section');
+            }
+        }
+    </script>
+</body>
+</html>
